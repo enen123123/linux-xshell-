@@ -1,0 +1,39 @@
+let	运算符 +-*/++--
+let c=$a+$b
+let c=$((2*b-a))	两种相同
+test	条件判断	大于gt小于lt等于eq	
+test 3 -gt 4	等于,可通过echo $?得到结果
+useradd test4	添加用户
+passwd test4	修改密码
+echo "12345678" | passwd --stdin test4	直接更新密码,避免捕获用户接口
+$1	位置参数，获得传入的第一个参数
+#! /bin/bash,添加用户，修改密码放入脚本文件，chmod +x更改为可执行文件，执行即可
+/dev/null	一个会使任何数据变成null，黑洞
+隐藏其将要现实的提示，用重定向来将其放入其他文件中
+&&都要执行
+||执行一个
+id	可用来判断用户是否存在
+!q退出都返回	q!强制退出
+if	内部help关键字,判断
+if test 1 -gt 2;then echo no;else echo yes;fi	判断两数字大小
+while	循环
+while test $a -lt 3;do ((a++));done	a增加到大于等于3
+for	循环
+for((a=0;a<3;a++));do echo $a;done	a增加到大于等于3
+for a in 0 1 2 ;do echo $a;((a++));done	同上
+seq 3	打印数字序列
+``包含的命令可以优先执行
+du	查看某文件下的各文件占用内存
+du -a	all全部文件
+oldIFS=$IFS	分割符号，默认空格、制表符、换行符
+IFS=$"\n"		更改为换行符
+IFS=$oldIFS	改回默认固定形式前两行在首，后一行在尾，用\n分割
+wc	统计 -l行数 -m字符数
+head	打印前几行
+tail -n	后n行
+read line	读取一个内容，以换行符作为结束
+<	从文件里读取
+|	管道，左边是父bash,右边是子bash
+
+
+

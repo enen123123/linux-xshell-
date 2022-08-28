@@ -1,0 +1,53 @@
+bash
+
+source sh01.sh	读取脚本sh01.sh中的文件，当前bash里面执行，
+. sh01.sh	读取脚本，同source
+echo $$	当前进程号
+yum install psmisc	安装psmisc
+pstree	进程树，需要psmisc包
+chmod +x sh01.sh	更改可执行文件
+./sh01.sh	读取脚本类似source，子bash里执行
+#! /bin/bash	脚本的本质就是进入一个子bash，然后读取数据，
+设置的话会进入指定的bash,即使不设置也会进入一个默认的bash
+脚本编程
+ls /proc/$$/fd	
+0标准输入	1标准输出	2错误输出
+ps -ef | grep $$	查询端口号进程
+ls 1> sh03.sh	将ls标准输出给sh03.sh,会覆盖
+ls 1>>sh03.sh	追加重定向
+ls a 2>sh03.sh	错误输出，错误输出总出现在文件开头
+ls / /a 1>>sh04.sh 2>>sh04.sh	两种输出同时填入
+ls / /aaaaaaa 1>sh04.sh 2>&1		两者混合
+read sh05<<<"12345"	从一个字符串读取数据
+read sh05<<AA	把结束符里面的数据读取
+> qwe
+> qwer
+> AA		结束符AA
+cat sh05</etc	读取文件里数据	！！！别乱用呀
+		对文件/etc/inittab   /etc/yum.config /etc/group  更改过
+		暂时打算将虚拟机112的文件进行复制
+whereis	用来查找文件
+exec通过给定命令，替换shell、程序
+/proc/$$/fd	查看标准输入输出等
+exec 8<> /dev/tcp/www.4399.com/80	将8作为4399网站的连接
+echo "GET / HTTP/1.0\n" 1>&8	get请求方式 目录 请求协议 输出重定向到8
+cat 0<&8	8的标准输出	HTTP/1.0：短连接，只能得到一次请求、接收一次数据
+sxt(){
+> echo hello
+> }
+构建一个函数sxt,可直接调用
+local	本地变量
+bash对空格敏感。数组的时候空格比 , 好用
+echo $?	判断上一个命令是否执行成功，成功返回0
+$*  $@ $#	列表、列表、列表个数
+$$=$BASHPID	当前shell的PID，管道
+管道 |	左边命令的一个输出->右边命令的一个输入（左边父类，右边子类，$$比较特殊，$BASHPID就可以）
+文件中无法继承外部的值，通过export（导出）可以实现值的放入
+./sh05.sh &	./加&符号可以是后台运行
+管道对export不需要，./运行程序对export重要
+echo "$a"=0	弱引用
+echo '$a'=$a	强引用
+cp /etc/{inittab,passwd} ./	同时复制同父目录下两个文件
+echo "`echo 33`"	反引号`的优先级高于"
+||执行任意一个，先左后右	&&都执行
+

@@ -1,0 +1,127 @@
+ssh root@192.168.91.110	xshell用来连接虚拟机网络
+cd /etc/	转到etc目录
+ls	查看目录
+ip addr	地址
+type +要查看的命令		判断命令类型
+type -a +要查看的命令	
+cd /sbin/
+ls	查看目录
+ll	查看目录和文件 
+cat+文件
+
+type yum	查看路径
+file /usr/bin/yum
+cd /usr/bin
+cat yum	抓取文件，不同情况下会产生二进制文件（机器识别）和文本（人工识别）文件，都是外部文件
+bash：解释器执行器
+外部命令：bash  ksh csh
+内部命令：shell builtin
+echo $PATH	表示环境变量
+man：内部命令 	SPACE下翻页B上翻页Q退出
+help：外部命令
+安装方式,举例yum：yum install man -y
+ELF：二进制文件
+
+whereis +命令	查看命令具体位置
+file +文件		查看文件类型
+echo +东西		输出东西
+$PATH	环境变量
+$LANG	语言（UTF-8）
+ps -fe	查看进程
+变量，前面加$：a=666,b=(1,2,'sds'),c=(2 3 5),{c[3]}
+echo $$	xshell的进程数，重启后每次打开都不一样
+hash	查看缓存
+hash -r	清楚缓存
+clear	清楚窗口
+
+cd 	切换目录
+白字文件	蓝字文件夹
+ll	目录文件
+ls	目录
+ls -a	隐藏目录
+df	磁盘使用率
+df -h
+du	目录文件大小
+du -f	
+vi	修改文件
+pwd	当前目录
+mkdir	创建文件夹
+rm 	删除文件
+rm -f	强制
+rm -r	文件夹
+cp	拷贝文件
+cp -r	文件夹
+mv	移动文件，重命名
+ln	链接两个文件
+ln -r	软链接
+stat	元数据
+touch	文件存在刷新时间，文件不存在建立文件
+cd /	根目录
+cd ~	家目录
+cd root	
+cd rurb	两个里面有系统的一些基础东西，用ll,ls查看
+cat	展示文件所有内容
+more	分页展示，space下一页
+list	分页，b上一页，内存范围
+head	前几行
+head -5	前五行
+tail	后几行
+tail -f	补充文件内容,配合echo和>>使用
+echo "hello" >> en	输出hello给文件en
+cat en | head -3	管道'|'，将cat en的前三行输出 
+head -2 en|tail -1	en 的前两行的最后一行
+umount +分区	卸载分区
+mount 		安装
+useradd	可添加home中的文件
+ctrl+insert	复制
+shift+insert	粘贴
+
+vi	全屏编辑器
+vi +3	第三行
+vi +	最后一行
+vi +/auto en	文件第一次出现auto行
+:q	退出
+:wq	保存退出
+:x	类似:wq
+:q!	退出不保存
+:w	保存
+:w!	强制保存
+shift+ZZ	键盘退出
+Esc	退出输入模式
+i	前输入模式
+a	后输入
+o	上新建
+O	下
+I	行首
+A	行尾
+:set nu	末行模式显示输入行数
+:set nonu	关闭行数
+h j k l	上下左右移动光标
+w e b	词间：下一个移动词首、词尾，前一个词首
+0 ^ $	行内：绝对行首、行首、行尾
+G 3G gg	行间：末尾、第三行、开头
+Ctrl +f +b	翻屏：上、下
+x 3x r 3r	删除、删除3个、替换、替换3个
+dd、dw	删除行、字
+yy、yw、dd、p	复制、复制单词、删除剪切、粘贴
+u、Ctrl+r	恢复、撤回
+.	重复上一步内容
+/a	寻找a
+:/a	a行首
+：！ ls	不退出文件编辑，查找文件夹
+:% s/aaa/bbb/	%:全文替换、s:aaa替换为bbb
+/// ### %%%	可互相替换
+$	末尾行
+
+
+
+
+
+
+
+
+
+
+
+
+

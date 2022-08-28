@@ -1,0 +1,108 @@
+账户管理
+touch	建立文件
+mkdir	建立文件夹
+re 	删除文件
+useradd test2	创建账户
+userdel		删除
+passwd test2	设置、更改test2密码
+groupadd share	添加组
+groupdel		删除组
+usermod -G share test2	test2添加到share组
+uesrmod		改变组权限
+chown root:share share/	改变属主、属组
+chmod g+w share	属组，赋予w权限
+chmod 721 share	7=rwx 4=r 2=w 1=x
+chmod o-rx share	其他，删除rx
+重新登录，cd到指定文件名称下，才可以修改文件
+chown :share test2	改变test2的组
+sudo	切换root用户
+su	切换普通用户
+
+yum search 	用来网上查询
+yum install 	安装
+./configure	生成编译的关系，检查错误
+-devel		一般安装这个类型的开发文件，自动选择系统版本
+安装 tengine
+tar -zxvf		解压
+vi README	README查看说明
+./configure --help	configure帮助手册
+./configure	检查文件错误
+yum install -y gcc	网上寻找安装gcc,-y提前回答是否安装
+前缀g：gnu	维护软件组织
+yum search pcre	网上查找pcre
+yum install pcre-devel	选择需要的pcre-版本
+yum search openssl	
+yum install openssl-devel	
+vi里面输入/，直接跳转
+make	编译，目录下，创建
+make install	安装，判断路径是否有数据，并且完善文件数据
+cd /usr/local/nginx/sbin	转到目录下，才能启动
+./nginx	启动nginx
+ps -ef|grep nginx	查看nginx的进程号
+kill -quit 1351	从容停止nginx:master process
+cd /usr/local/nginx/html	转到这个目录下，填写数据
+vi index.html	编辑文件，更改内容，加在<body>下
+netstat -ltunp	查看端口
+iptables -F	关闭防火墙
+
+RMP安装
+rpm -ivh jdk-7u67-linux-x64.rpm
+i instore	vh 显示进度安装进度
+java -version	显示环境变量
+/usr/java	目录
+/etc/profile 配置文件信息：	
+	export JAVA_HOME=/usr/java/jdk1.7.0_67
+	export PATH=$PATH:$JAVA_HOME/bin
+source /etc/profile		使编辑好的文本刷新
+rpm -e	卸载
+rpm	可以下载
+rpm -qa	查看软件的安装包
+rpm -qf /usr/java	查询某个位置安装的包
+hash 	查看缓存
+mount /dev/cdrom /mnt	挂载在mnt
+df	挂载情况
+rpm不适合需要有依赖关系的安装
+
+cd /etc/yum.repos.d	yum的软件下载
+yum install wget  	安装一个工具
+madir backup	打包文件放在backup
+mv CentOS* backup
+配置阿里源，直接在国内下载，不需要在外网下载
+wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+阿里云上面找下载地址，输入网址直接安装，
+yum clean all	清楚本地缓存
+yum makecache	生成缓存
+连不上外网，直接在包里，本地下载，本地源
+mv CentOS-Base.repo CentOS-Base.repo.bak	修改
+cp CentOS-Base.repo.bak CentOS-Base.repo	拷贝
+vi CentOS-Base.repo.bak	修改
+修改为：	[base]
+	name=local
+	baseurl=file:///mnt
+	gpgcheck=1
+	enable=1
+如果挂载的目录不在，无法安装，下载软件的时候，需要挂载
+mount /dev/cdrom /mnt	挂载目录
+umount /mnt	去掉挂载
+yum info mysql	查看mysql安装包相关信息
+yum search	查找
+yum clean all	清楚本地缓存
+yum makecache	生成缓存
+yum update	更新
+yum install	安装
+yum remove/erase	卸载
+locale	当前语言包
+locale -a	拥有的语言包
+yum install kde-l10n-Chinese	centos7的安装语言
+LANG="zh_CN.UTF-8"    #修改为中文	临时改变语言包
+LANG="en_US.UTF-8"    #修改为英文
+vi /etc/locale.conf	加下面内容到第一行
+LANG=zh_CN.UTF8	设置中文
+
+
+
+
+
+
+
+

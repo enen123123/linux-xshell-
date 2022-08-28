@@ -1,0 +1,74 @@
+正则表达式
+ctrl+u	查看网页源代码
+ctrl+f	静态查找
+^	开头
+$|	尾部
+|	或
+\<  \>	单词左右边界
+-E	代替间隔符号：\
+.*	连接匹配
+grep	显示匹配行
+grep "aaa" en	调取文件en的含有aaa行
+grep "[0-9]" en	调取文件en的含有0-9数字行
+grep "[23]" en	2或3
+grep "[0-8]\{2\}" en	数字0-9，两位
+grep "\<network\>" en	network单词
+grep -E "(^[^0-9]{2})([0-9]{2})([^0-9]{2}$)" en	首部为非数字、两位；中间有数字、两位；尾部有非数字、两位	
+grep  ".*oo.*xx" en	oo和xx两个
+grep -E ".*(we).*(ew).*\1.*\2" abc	we ew we ew
+grep -E ".*(we).*(ew).*\2.*\1" abc	we ew ew we
+
+cut -d "." -f1 abc	以.为切割符切割
+cut -d "=" -s -f1 abc	=
+-d	自定义分隔符
+-f1	显示切割后的第一列 
+-s	有切割符号的行
+sort abc	字排序abcdefg
+-k1	第一列
+-r	逆序
+-t	数字排序1234567
+wc 	查看行、列、总字节数
+
+sed  "2p" abc	复制第二行
+-i	直接修改源文件 
+2i\    2a\	加载双引号里，分别在第二行后、前
+s/1/0/	替换1为0
+/1/d	删除0
+sed  "s/\(IPADDR=\(\([0-9]\|[1-9][0-9]\|[1][0-9][0-9]\|[2][0-4][0-9]\|[2][5][0-5]\)\.\)\{3\}\).*/\188/" abc
+改变abc的ipaddr中的第三个端口号
+
+awk	文本分析、必须用单引号''
+awk -F'-' '{ print $1 }' lien		文件lien,切割符号为-，输出第一列,-F自定义分隔符
+awk -F':' 'BEGIN{print "first \t line"}{ print $1 "\t" $7 }END{print "END line"}' passwd
+开头结尾加提示语
+awk '/root:/ {print $0} ' passwd	$0:全部结果  //分割符
+awk -F ':' '{print NR "\t" NF "\t" $0}' passwd 	-Fl设置列数NR行号NF列数$0全部结果
+awk '{split($3,date,"-");if(date[2]="3"){name[$1]+=$5}}END{for(i in name){print i "\t" name[i]}}' lien
+split分割、判断、循环
+awk '{split($3,date,"-");if(date[2]="3"){name[$1]+=$5};if($2=="0"){role[$1]="manager"}else{role[$1]="worker"}}END{for(i in name){print i "\t" role[i] "\t" name[i]}}' lien
+-f 	用来文件的输出
+转换成文件，然后调用:
+vi test
+{
+        split($3,date,"-");
+        if(date[2]="3")
+                {name[$1]+=$5};
+        if($2=="0")
+                {role[$1]="manager"}
+        else
+                {role[$1]="worker"}
+}
+END{
+        for(i in name)
+                {print i "\t" role[i] "\t" name[i]}
+}
+:wq
+awk -f test1 lien
+
+
+
+
+
+
+
+

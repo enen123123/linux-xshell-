@@ -1,0 +1,33 @@
+localhost login:root
+password:123456	不显示不可见，但要输入
+ls	显示目录
+ip	查看ip功能
+ping	查验网络连接
+ip addr	相当于ifconfig这个用不了，也相当于cmd的ipconfig，sudo apt installnet-tools   用来安装net-tools工具包
+cd /etc/sysconfig/network-scripts/   网络配置
+yvi ifcfg-ens33  用来编写网络的配置
+vi ifcfg-eth0
+不同电脑配置网卡配置情况不通过，有eth0的，也有ens33的，使用ip addr来查看其配置的网卡是什么
+设置网卡的目录：
+DEUICE=ens33
+TYPE=Ethernet
+DEFROUTE=YES
+MM_CONTROLLED=YES
+ONBOOT=YES   系统启动时是否启动网卡
+BOOTPROTO=static   网络分配方式：静态(static)
+IPADDR=192.168 . 91.110   根据自己电脑虚拟机网络编辑给的来设置，不能为0~2，因为都被占用
+NETMASK=255.255.255.0
+GATEWAY=192.168. 91.2   查看虚拟机网络，NAT设置的网关，使用相同的配置
+DNS1=114.114.114.114
+DNS2=0.0.0.0
+
+esc退出
+:wq 保存
+a修改配置
+cd etc/udev/rules.d/    跳目录，查看目录
+rm _f 加要删除的东西
+poweroff   关机
+ping+网址   可以验证网络连接
+Ctrl+c停止传输数据
+init 6 重启
+
